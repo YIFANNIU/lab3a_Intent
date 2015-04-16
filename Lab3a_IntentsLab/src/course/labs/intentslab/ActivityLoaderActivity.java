@@ -2,6 +2,7 @@ package course.labs.intentslab;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.LabeledIntent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -82,20 +83,19 @@ public class ActivityLoaderActivity extends Activity {
         
 		// TODO - Create a base intent for viewing a URL
 		// (HINT:  second parameter uses Uri.parse())
-		
-      
-		Intent baseIntent = new Intent(Intent.ACTION_VIEW,Uri.parse(URL));
+		Intent baseIntent = null;
+		baseIntent = new Intent(Intent.ACTION_VIEW,Uri.parse(URL));
 		
 		// TODO - Create a chooser intent, for choosing which Activity
 		// will carry out the baseIntent
 		// (HINT: Use the Intent class' createChooser() method)
 		Intent chooserIntent = null;
-        chooserIntent = new Intent(Intent.ACTION_VIEW);
+		chooserIntent = new Intent();
 		Log.i(TAG,"Chooser Intent Action:" + chooserIntent.getAction());
         
         
 		// TODO - Start the chooser Activity, using the chooser intent
-		startActivity(Intent.createChooser(new Intent(Intent.ACTION_VIEW,Uri.parse(URL)), CHOOSER_TEXT));
+		startActivity(Intent.createChooser(baseIntent, CHOOSER_TEXT));
         
 	}
     
